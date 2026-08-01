@@ -3,68 +3,143 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Oblix Studio creates games, animation, digital media and production-ready assets from New Zealand.">
-  <meta name="theme-color" content="#060708">
+  <meta name="description" content="Oblix Studio is an independent New Zealand studio creating original games, animation, digital media and production-ready assets.">
+  <meta name="theme-color" content="#050505">
+  <meta property="og:title" content="Oblix Studio — Games, Animation & Digital Media">
+  <meta property="og:description" content="Original games, animation, digital media and production-ready assets from New Zealand.">
+  <meta property="og:image" content="assets/images/thalassophobia.webp">
   <title>Oblix Studio — Games, Animation & Digital Media</title>
-  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="assets/images/oblix-mark.png" type="image/png">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
-<header class="site-header">
+<header class="site-header" data-header>
   <a class="brand" href="index.html" aria-label="Oblix Studio home">
-    <img class="brand-mark" src="assets/logo-mark.svg" alt=""><span class="brand-name">Oblix<small>Studio</small></span>
+    <img src="assets/images/oblix-wordmark.png" alt="Oblix Studio">
   </a>
-  <button class="menu-toggle" aria-label="Open navigation" aria-expanded="false"><span></span></button>
+  <button class="menu-toggle" aria-label="Open navigation" aria-expanded="false"><span></span><span></span></button>
   <nav class="nav-links" aria-label="Primary navigation">
-    <a href="index.html" aria-current="page">Home</a><a href="work.html">Work</a><a href="about.html">Studio</a><a class="nav-contact" href="contact.html">Start a project</a>
+    <a href="index.html" aria-current="page">Home</a>
+    <a href="work.html">Projects</a>
+    <a href="about.html">Studio</a>
+    <a class="nav-contact" href="contact.html">Contact</a>
   </nav>
 </header>
 
 <main id="main">
-  <section class="hero">
-    <div class="hero-media"><img src="assets/hero.svg" alt="Abstract portal in a dark real-time digital environment"></div><div class="hero-noise"></div>
+  <section class="hero" aria-label="Oblix Studio introduction">
+    <video class="hero-video" autoplay muted loop playsinline preload="auto" poster="assets/images/background-poster.jpg" data-hero-video>
+      <source src="assets/media/background-loop.mp4" type="video/mp4">
+    </video>
+    <div class="hero-shade"></div>
+    <div class="hero-grain"></div>
     <div class="hero-content">
-      <div class="eyebrow">Independent creative studio · New Zealand</div>
-      <h1>Worlds in <span>motion.</span></h1>
-      <div class="hero-bottom">
-        <p class="hero-copy">Oblix Studio develops original games, cinematic animation, digital media and production-ready 3D assets—built with strong visual direction and real-time craft.</p>
-        <div class="hero-actions"><a class="button primary" href="work.html">Explore the work</a><a class="button" href="contact.html">Contact studio</a></div>
+      <p class="eyebrow">Independent creative studio · New Zealand</p>
+      <img class="hero-wordmark" src="assets/images/oblix-wordmark.png" alt="Oblix Studio">
+      <div class="hero-lower">
+        <p>Original games, animation, digital media and production-ready assets shaped by strong visual direction and real-time craft.</p>
+        <div class="hero-actions">
+          <a class="button button-light" href="#gallery">View projects</a>
+          <a class="text-link" href="contact.html">Start a conversation <span>↗</span></a>
+        </div>
       </div>
     </div>
-    <div class="scroll-cue">Scroll to explore</div>
+    <a class="scroll-cue" href="#gallery"><span>Selected work</span><span>↓</span></a>
   </section>
 
-  <div class="ticker" aria-hidden="true"><div class="ticker-track"><span>Game Development</span><span>3D Animation</span><span>Digital Media</span><span>Game Assets</span><span>Real-Time Production</span><span>Game Development</span><span>3D Animation</span><span>Digital Media</span><span>Game Assets</span><span>Real-Time Production</span></div></div>
-
-  <section class="section" id="featured-work">
-    <div class="section-head reveal"><div class="section-kicker">01 / Selected work</div><div><h2 class="section-title">Projects built to <em>pull you in.</em></h2><p class="section-intro">Original IP, interactive experiences, animation and asset production. These demonstration projects can be replaced with your finished renders, trailers and case studies.</p></div></div>
-    <div class="work-grid">
-      <a class="work-card reveal" href="work.html#thalassophobia"><div class="work-image"><img src="assets/project-ocean.svg" alt="Deep ocean game concept artwork"></div><div class="work-meta"><div class="work-name">Thalassophobia</div><div class="work-type">Game development<br>Original IP</div></div></a>
-      <a class="work-card small reveal" href="work.html#lizard-leap"><div class="work-image"><img src="assets/project-lizard.svg" alt="Stylised lizard in a forest environment"></div><div class="work-meta"><div class="work-name">Lizard Leap</div><div class="work-type">Animation<br>Character story</div></div></a>
-      <a class="work-card small reveal" href="work.html#reel"><div class="work-image"><img src="assets/project-reel.svg" alt="Abstract animation reel artwork"></div><div class="work-meta"><div class="work-name">Studio Reel</div><div class="work-type">Animation<br>Motion design</div></div></a>
-      <a class="work-card reveal" href="work.html#assets"><div class="work-image"><img src="assets/project-assets.svg" alt="Hard-surface 3D asset artwork"></div><div class="work-meta"><div class="work-name">Asset Foundry</div><div class="work-type">3D assets<br>Environment kits</div></div></a>
+  <section class="marquee" aria-hidden="true">
+    <div class="marquee-track">
+      <span>Game Development</span><i></i><span>Animation</span><i></i><span>Digital Media</span><i></i><span>3D Assets</span><i></i>
+      <span>Game Development</span><i></i><span>Animation</span><i></i><span>Digital Media</span><i></i><span>3D Assets</span><i></i>
     </div>
+  </section>
+
+  <section class="section projects-section" id="gallery">
+    <div class="section-heading reveal">
+      <p class="section-index">01 / Selected projects</p>
+      <div>
+        <h1>Worlds built with <em>intent.</em></h1>
+        <p class="section-lead">A growing body of original interactive work from Oblix Studio—ranging from released games to current productions.</p>
+      </div>
+    </div>
+
+    <article class="project-feature reveal">
+      <div class="project-media video-frame">
+        <video controls playsinline preload="metadata" poster="assets/images/22-minutes-poster.jpg">
+          <source src="assets/media/22-minutes-trailer.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="project-copy">
+        <div class="project-topline"><span>Game</span><span class="status status-live">Available on Steam</span></div>
+        <h2>22 Minutes</h2>
+        <p>An original Oblix Studio game. Watch the official trailer, then visit Steam for the full game page, screenshots and release information.</p>
+        <a class="project-link" href="https://store.steampowered.com/app/2765180/22_Minutes/" target="_blank" rel="noopener noreferrer">View 22 Minutes on Steam <span>↗</span></a>
+      </div>
+    </article>
+
+    <article class="project-feature project-reverse reveal">
+      <div class="project-media">
+        <img src="assets/images/thalassophobia.webp" alt="Saturation diver inside a dark underwater industrial environment from Thalassophobia">
+      </div>
+      <div class="project-copy">
+        <div class="project-topline"><span>Game</span><span class="status">In development</span></div>
+        <h2>Thalassophobia</h2>
+        <p>A multiplayer underwater horror game built around saturation diving, dangerous deep-sea environments and the fragile safety of the diving bell.</p>
+        <a class="project-link" href="work.html#thalassophobia">Explore the project <span>→</span></a>
+      </div>
+    </article>
+
+    <article class="project-feature reveal">
+      <div class="project-media video-frame">
+        <video controls playsinline preload="metadata" poster="assets/images/woe-poster.jpg">
+          <source src="assets/media/woe-intro.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="project-copy">
+        <div class="project-topline"><span>Game</span><span class="status">In development</span></div>
+        <h2>Woe</h2>
+        <p>An unreleased original game currently in development at Oblix Studio. This early sequence offers a first look at the project’s atmosphere and direction.</p>
+        <a class="project-link" href="work.html#woe">View development footage <span>→</span></a>
+      </div>
+    </article>
   </section>
 
   <section class="section capabilities">
-    <div class="section-head reveal"><div class="section-kicker">02 / Capabilities</div><div><h2 class="section-title">One studio. <em>Multiple disciplines.</em></h2></div></div>
-    <div class="capability-row reveal"><div class="capability-num">01</div><div class="capability-name">Game development</div><div class="capability-detail">Original concepts, gameplay systems, level production and Unity development.</div></div>
-    <div class="capability-row reveal"><div class="capability-num">02</div><div class="capability-name">Animation</div><div class="capability-detail">Character animation, cinematic sequences, visual development and short-form storytelling.</div></div>
-    <div class="capability-row reveal"><div class="capability-num">03</div><div class="capability-name">3D assets</div><div class="capability-detail">Characters, props, environments and optimised production-ready asset packs.</div></div>
-    <div class="capability-row reveal"><div class="capability-num">04</div><div class="capability-name">Digital media</div><div class="capability-detail">Campaign visuals, motion graphics, interactive media and branded content.</div></div>
+    <div class="section-heading reveal">
+      <p class="section-index">02 / What we do</p>
+      <div><h2>One studio.<br><em>Multiple disciplines.</em></h2></div>
+    </div>
+    <div class="capability-list">
+      <div class="capability reveal"><span>01</span><h3>Game development</h3><p>Original concepts, gameplay systems, world-building and Unity production.</p></div>
+      <div class="capability reveal"><span>02</span><h3>Animation</h3><p>Character animation, cinematic sequences and visual storytelling.</p></div>
+      <div class="capability reveal"><span>03</span><h3>Asset production</h3><p>Characters, props and environments built for practical real-time pipelines.</p></div>
+      <div class="capability reveal"><span>04</span><h3>Digital media</h3><p>Motion-led creative work, promotional content and interactive experiences.</p></div>
+    </div>
   </section>
 
-  <section class="section statement">
-    <div class="statement-inner reveal"><p>We combine <strong>art direction</strong>, technical production and storytelling to create work with a clear identity.</p><div class="statement-note">Oblix is being built as a compact, multidisciplinary studio—able to develop its own worlds and collaborate with clients on focused creative production.</div></div>
+  <section class="studio-statement">
+    <div class="statement-mark reveal"><img src="assets/images/oblix-mark.png" alt=""></div>
+    <div class="statement-copy reveal">
+      <p>Oblix Studio develops original worlds and helps turn ambitious creative ideas into focused, production-ready work.</p>
+      <a class="project-link" href="about.html">About the studio <span>→</span></a>
+    </div>
   </section>
 
   <section class="contact-band">
-    <div class="contact-band-inner reveal"><div class="eyebrow">Have a game, animation or asset project?</div><h2>Let’s build <span>something distinct.</span></h2><a class="contact-link" href="contact.html"><span>Start a conversation</span><span>↗</span></a></div>
+    <div class="contact-band-inner reveal">
+      <p class="eyebrow">Projects · Collaborations · Enquiries</p>
+      <h2>Let’s make something<br><em>worth remembering.</em></h2>
+      <a class="contact-arrow" href="contact.html" aria-label="Contact Oblix Studio">↗</a>
+    </div>
   </section>
 </main>
 
-<footer class="site-footer"><div>© <span data-year></span> Oblix Studio</div><nav><a href="work.html">Work</a><a href="about.html">Studio</a><a href="contact.html">Contact</a></nav><div class="footer-right">Nelson · New Zealand</div></footer>
+<footer class="site-footer">
+  <div>© <span data-year></span> Oblix Studio</div>
+  <nav><a href="work.html">Projects</a><a href="about.html">Studio</a><a href="contact.html">Contact</a></nav>
+  <div>Nelson · New Zealand</div>
+</footer>
 <script src="script.js"></script>
 </body>
 </html>

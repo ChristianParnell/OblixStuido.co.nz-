@@ -1,53 +1,90 @@
-const header = document.querySelector('.site-header');
-const menuToggle = document.querySelector('.menu-toggle');
-const navLinks = document.querySelectorAll('.nav-links a');
+(() => {
+  const header = document.querySelector('[data-header]');
+  const menuButton = document.querySelector('.menu-toggle');
+  const nav = document.querySelector('.nav-links');
 
-const updateHeader = () => header?.classList.toggle('scrolled', window.scrollY > 32);
-updateHeader();
-window.addEventListener('scroll', updateHeader, { passive: true });
+  const updateHeader = () => {
+    if (!header || header.classList.contains('solid')) return;
+    header.classList.toggle('scrolled', window.scrollY > 36);
+  };
 
-menuToggle?.addEventListener('click', () => {
-  const open = document.body.classList.toggle('menu-open');
-  menuToggle.setAttribute('aria-expanded', String(open));
-});
-navLinks.forEach(link => link.addEventListener('click', () => {
-  document.body.classList.remove('menu-open');
-  menuToggle?.setAttribute('aria-expanded', 'false');
-}));
+  updateHeader();
+  window.addEventListener('scroll', updateHeader, { passive: true });
 
-const revealObserver = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
-      revealObserver.unobserve(entry.target);
-    }
-  });
-}, { threshold: 0.12 });
-document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+  if (menuButton && nav) {
+    const closeMenu = () => {
+      nav.classList.remove('open');
+      menuButton.setAttribute('aria-expanded', 'false');
+      menuButton.setAttribute('aria-label', 'Open navigation');
+      document.body.style.overflow = '';
+    };
 
-const filterButtons = document.querySelectorAll('.filter-button');
-const galleryItems = document.querySelectorAll('.gallery-item');
-filterButtons.forEach(button => {
-  button.addEventListener('click', () => {
-    const filter = button.dataset.filter;
-    filterButtons.forEach(btn => btn.classList.remove('active'));
-    button.classList.add('active');
-    galleryItems.forEach(item => {
-      const show = filter === 'all' || item.dataset.category === filter;
-      item.classList.toggle('hidden', !show);
+    menuButton.addEventListener('click', () => {
+      const isOpen = nav.classList.toggle('open');
+      menuButton.setAttribute('aria-expanded', String(isOpen));
+      menuButton.setAttribute('aria-label', isOpen ? 'Close navigation' : 'Open navigation');
+      document.body.style.overflow = isOpen ? 'hidden' : '';
     });
+
+    nav.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMenu));
+    window.addEventListener('keydown', event => {
+      if (event.key === 'Escape') closeMenu();
+    });
+  }
+
+  document.querySelectorAll('[data-year]').forEach(node => {
+    node.textContent = new Date().getFullYear();
   });
-});
 
-const contactForm = document.querySelector('#contact-form');
-contactForm?.addEventListener('submit', (event) => {
-  event.preventDefault();
-  const data = new FormData(contactForm);
-  const subject = encodeURIComponent(`Oblix Studio enquiry — ${data.get('projectType') || 'New project'}`);
-  const body = encodeURIComponent(
-    `Name: ${data.get('name')}\nEmail: ${data.get('email')}\nCompany: ${data.get('company') || 'Not supplied'}\n\nProject:\n${data.get('message')}`
-  );
-  window.location.href = `mailto:hello@oblixstudio.com?subject=${subject}&body=${body}`;
-});
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const heroVideo = document.querySelector('[data-hero-video]');
+  if (heroVideo) {
+    if (reducedMotion) {
+      heroVideo.pause();
+      heroVideo.removeAttribute('autoplay');
+    } else {
+      const attemptPlay = heroVideo.play();
+      if (attemptPlay && typeof attemptPlay.catch === 'function') {
+        attemptPlay.catch(() => heroVideo.classList.add('autoplay-blocked'));
+      }
+    }
+  }
 
-document.querySelectorAll('[data-year]').forEach(el => el.textContent = new Date().getFullYear());
+  const reveals = document.querySelectorAll('.reveal');
+  if (reducedMotion || !('IntersectionObserver' in window)) {
+    reveals.forEach(item => item.classList.add('visible'));
+  } else {
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px' });
+    reveals.forEach(item => observer.observe(item));
+  }
+
+  const contactForm = document.getElementById('contact-form');
+  if (contactForm) {
+    contactForm.addEventListener('submit', event => {
+      event.preventDefault();
+      const form = new FormData(contactForm);
+      const name = String(form.get('name') || '').trim();
+      const email = String(form.get('email') || '').trim();
+      const company = String(form.get('company') || '').trim();
+      const projectType = String(form.get('projectType') || '').trim();
+      const message = String(form.get('message') || '').trim();
+      const subject = encodeURIComponent(`Oblix Studio enquiry — ${projectType}`);
+      const body = encodeURIComponent([
+        `Name: ${name}`,
+        `Email: ${email}`,
+        `Company: ${company || 'Not provided'}`,
+        `Project type: ${projectType}`,
+        '',
+        message
+      ].join('\n'));
+      window.location.href = `mailto:hello@oblixstudio.com?subject=${subject}&body=${body}`;
+    });
+  }
+})();
