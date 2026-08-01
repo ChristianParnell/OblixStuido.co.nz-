@@ -84,7 +84,7 @@
         '',
         message
       ].join('\n'));
-      window.location.href = `mailto:hello@oblixstudio.com?subject=${subject}&body=${body}`;
+      window.location.href = `mailto:oblixstudio@gmail.com?subject=${subject}&body=${body}`;
     });
   }
 })();
